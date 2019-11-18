@@ -1,6 +1,6 @@
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
-  set :views, Proc.new { File.join(root, "../views/") }
+  set :views, proc { File.join(root, "../views/") }
 
   configure do
     enable :sessions
@@ -12,7 +12,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/registrations/signup' do
-
     erb :'/registrations/signup'
   end
 
@@ -25,7 +24,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/sessions/login' do
-
     # the line of code below render the view page in app/views/sessions/login.erb
     erb :'sessions/login'
   end
@@ -45,7 +43,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/home' do
-
     @user = User.find(session[:user_id])
     erb :'/users/home'
   end
